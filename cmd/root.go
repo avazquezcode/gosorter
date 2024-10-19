@@ -7,7 +7,7 @@ package cmd
 import (
 	"os"
 
-	"github.com/avazquez/gosorter/internal/command/sort"
+	"github.com/avazquezcode/gosorter/internal/command/sort"
 
 	"github.com/spf13/cobra"
 )

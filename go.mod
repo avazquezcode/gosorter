@@ -1,4 +1,4 @@
-module github.com/avazquez/gosorter
+module github.com/avazquezcode/gosorter
 
 go 1.22.3
 

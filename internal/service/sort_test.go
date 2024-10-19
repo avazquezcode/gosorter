@@ -3,8 +3,8 @@ package service_test
 import (
 	"testing"
 
-	"github.com/avazquez/gosorter/internal/service"
-	"github.com/avazquez/gosorter/internal/sorting"
+	"github.com/avazquezcode/gosorter/internal/service"
+	"github.com/avazquezcode/gosorter/internal/sorting"
 
 	"github.com/stretchr/testify/assert"
 )

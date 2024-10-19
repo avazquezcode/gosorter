@@ -3,9 +3,9 @@ package sort
 import (
 	"fmt"
 
-	"github.com/avazquez/gosorter/internal/file"
-	"github.com/avazquez/gosorter/internal/service"
-	"github.com/avazquez/gosorter/internal/sorting"
+	"github.com/avazquezcode/gosorter/internal/file"
+	"github.com/avazquezcode/gosorter/internal/service"
+	"github.com/avazquezcode/gosorter/internal/sorting"
 	"github.com/pkg/errors"
 
 	"github.com/spf13/cobra"

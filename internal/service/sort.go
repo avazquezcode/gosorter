@@ -1,8 +1,8 @@
 package service
 
 import (
-	"github.com/avazquez/gosorter/internal/sorting"
-	"github.com/avazquez/gosorter/internal/utils/string_slice"
+	"github.com/avazquezcode/gosorter/internal/sorting"
+	"github.com/avazquezcode/gosorter/internal/utils/string_slice"
 )
 
 type SortService struct {

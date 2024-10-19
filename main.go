@@ -1,6 +1,6 @@
 package main
 
-import "github.com/avazquez/gosorter/cmd"
+import "github.com/avazquezcode/gosorter/cmd"
 
 func main() {
 	cmd.Execute()
