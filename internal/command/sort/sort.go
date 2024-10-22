@@ -45,10 +45,7 @@ func process(cmd *cobra.Command, flags *flagsDTO, args []string) error {
 	}
 
 	sortSvc := createSortService(flags, sorter)
-	output, err := sortSvc.Process(lines)
-	if err != nil {
-		return err
-	}
+	output := sortSvc.Process(lines)
 
 	for _, v := range output {
 		cmd.Println(v)

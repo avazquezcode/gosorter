@@ -14,28 +14,24 @@ func TestProcess(t *testing.T) {
 		parameters sort.Parameters
 		input      []string
 		expected   []string
-		expectsErr bool
 	}{
 		"base case (default values)": {
-			input:      []string{"b", "c", "a", "a"},
-			expected:   []string{"a", "a", "b", "c"},
-			expectsErr: false,
+			input:    []string{"b", "c", "a", "a"},
+			expected: []string{"a", "a", "b", "c"},
 		},
 		"removing duplicates (default values)": {
 			parameters: sort.Parameters{
 				RemoveDuplicates: true,
 			},
-			input:      []string{"b", "c", "a", "a"},
-			expected:   []string{"a", "b", "c"},
-			expectsErr: false,
+			input:    []string{"b", "c", "a", "a"},
+			expected: []string{"a", "b", "c"},
 		},
 		"limiting output": {
 			parameters: sort.Parameters{
 				TopLimit: 2,
 			},
-			input:      []string{"b", "c", "a"},
-			expected:   []string{"a", "b"},
-			expectsErr: false,
+			input:    []string{"b", "c", "a"},
+			expected: []string{"a", "b"},
 		},
 		"desc order is expected": {
 			input:    []string{"b", "c", "a"},
@@ -43,7 +39,6 @@ func TestProcess(t *testing.T) {
 			parameters: sort.Parameters{
 				DescOrder: true,
 			},
-			expectsErr: false,
 		},
 	}
 
@@ -51,9 +46,8 @@ func TestProcess(t *testing.T) {
 		t.Run(name, func(t *testing.T) {
 			sorter, _ := sorting.Factory("default", sorting.SortOptions{})
 			sortSvc := sort.NewService(test.parameters, sorter)
-			output, err := sortSvc.Process(test.input)
+			output := sortSvc.Process(test.input)
 			assert.Equal(t, test.expected, output)
-			assert.Equal(t, test.expectsErr, err != nil)
 		})
 	}
 }

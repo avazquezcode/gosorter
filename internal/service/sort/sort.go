@@ -28,7 +28,7 @@ func NewService(parameters Parameters, sorter sorting.Sorter) *Service {
 }
 
 // Process executes the sort process
-func (s *Service) Process(lines []string) ([]string, error) {
+func (s *Service) Process(lines []string) []string {
 	if s.parameters.RemoveDuplicates {
 		lines = slicetools.RemoveDuplicates(lines)
 	}
@@ -43,5 +43,5 @@ func (s *Service) Process(lines []string) ([]string, error) {
 		sortedLines = sortedLines[0:min(len(sortedLines), s.parameters.TopLimit)]
 	}
 
-	return sortedLines, nil
+	return sortedLines
 }
