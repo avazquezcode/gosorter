@@ -11,7 +11,7 @@ It is largely inspired in the ["sort"](https://man7.org/linux/man-pages/man1/sor
 
 # Getting started
 
-- Just install this tool: `go install github.com/avazquezcode/gosorter@v0.1.1-alpha`
+- Just install this tool: `go install github.com/avazquezcode/gosorter@latest`
 
 - Execute: `gosorter sort <FILE_PATH>`
 
