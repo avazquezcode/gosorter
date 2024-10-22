@@ -18,9 +18,10 @@ type (
 
 func addFlags(cmd *cobra.Command) {
 	cmd.PersistentFlags().Bool("unique", false, "if true, only unique values will be consider in the output")
-	cmd.PersistentFlags().Int("top", 0, "top is used to limit the output to the first <N> elements")
-	cmd.PersistentFlags().String("method", "default", "method referes to the sorting algorithm used to perform the sorting operation (default|insertion|selection|mergesort)")
+	cmd.PersistentFlags().Int("top", 0, "used to limit the items shown in the output to the first <N> elements")
+	cmd.PersistentFlags().String("method", "default", "refers to the sorting algorithm used to perform the sorting operation (default|insertion|selection|mergesort)")
 	cmd.PersistentFlags().String("order", "asc", "indicates the order of the sorted output (asc|desc)")
+	cmd.PersistentFlags().Bool("ignore-case", false, "if true, the char case will be ignored in the comparison (i.e: 'AVA' = 'ava')")
 }
 
 func parseFlags(cmd *cobra.Command) (*flagsDTO, error) {
@@ -44,11 +45,17 @@ func parseFlags(cmd *cobra.Command) (*flagsDTO, error) {
 		return nil, err
 	}
 
+	ignoreCase, err := cmd.Flags().GetBool("ignore-case")
+	if err != nil {
+		return nil, err
+	}
+
 	return &flagsDTO{
-		unique:    unique,
-		topLimit:  topLimit,
-		algorithm: algorithm,
-		descOrder: *isDesc,
+		unique:     unique,
+		topLimit:   topLimit,
+		algorithm:  algorithm,
+		descOrder:  *isDesc,
+		ignoreCase: ignoreCase,
 	}, nil
 }
 
