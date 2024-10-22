@@ -7,7 +7,7 @@ It is largely inspired in the ["sort"](https://man7.org/linux/man-pages/man1/sor
 
 # Important
 
-⚠️ This tools was developed for fun in a few hours, and not battle tested. So use carefully and at your own risk :)
+⚠️ This tools was developed very quickly and just for fun :). It is not battle tested. So use please use it carefully and at your own risk!
 
 # Getting started
 
