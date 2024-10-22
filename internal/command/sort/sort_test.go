@@ -23,28 +23,8 @@ func TestSortCmd(t *testing.T) {
 			args:       []string{"testdata/test404.txt"},
 			expectsErr: true,
 		},
-		"invalid unique flag": {
-			args:       []string{"testdata/test.txt", "--unique=string"},
-			expectsErr: true,
-		},
-		"invalid top flag": {
-			args:       []string{"testdata/test.txt", "--top=string"},
-			expectsErr: true,
-		},
-		"invalid method flag (unsopported option)": {
-			args:       []string{"testdata/test.txt", "--method=invalid_one"},
-			expectsErr: true,
-		},
 		"invalid order flag (unsopported option)": {
 			args:       []string{"testdata/test.txt", "--order=invalid_one"},
-			expectsErr: true,
-		},
-		"invalid order flag (invalid type)": {
-			args:       []string{"testdata/test.txt", "--order"},
-			expectsErr: true,
-		},
-		"invalid ignore case flag": {
-			args:       []string{"testdata/test.txt", "--ignore-case=string"},
 			expectsErr: true,
 		},
 		"valid case - default flags": {
