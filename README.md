@@ -13,16 +13,24 @@ It is largely inspired by the ["sort"](https://man7.org/linux/man-pages/man1/sor
 
 # Getting started
 
-- Just install this tool: `go install github.com/avazquezcode/gosorter@latest`
+## Installation
+
+- Just install the tool: `go install github.com/avazquezcode/gosorter@latest`
+
+## Usage
+
+__Basic usage__:
 
 - Execute: `gosorter sort <FILE_PATH>`
 
-For more than one file just add multiple names :) For example:
+__For more than one file just add multiple names :) For example__:
 
 - Execute: `gosorter sort <FILE1_PATH> <FILE2_PATH> <FILE3_PATH>`
 
-- To check the different flags (options) you can use, please run `gosorter sort --help`
+__To check the different flags (options) you can use, please run__: 
+
+- Execute: `gosorter sort --help`
 
 # Documentation
-For a complete documentation of the tool, please refer to [this](./docs/gosorter.md).
 
+For a complete documentation of the tool, please refer to [this](./docs/gosorter.md).
