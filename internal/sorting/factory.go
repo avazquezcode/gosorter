@@ -4,13 +4,6 @@ import (
 	"fmt"
 )
 
-var sorters = map[string]Sorter{
-	"default":   defaultSort{},
-	"selection": selectionSort{},
-	"insertion": insertionSort{},
-	"mergesort": mergeSort{},
-}
-
 func Factory(algorithm string, options SortOptions) (Sorter, error) {
 	switch algorithm {
 	case "default":
@@ -24,5 +17,4 @@ func Factory(algorithm string, options SortOptions) (Sorter, error) {
 	default:
 		return nil, fmt.Errorf("algorithm: %s is not supported", algorithm)
 	}
-
 }

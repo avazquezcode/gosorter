@@ -75,7 +75,6 @@ func createSortService(flags *flagsDTO, sorter sorting.Sorter) *sort.Service {
 		RemoveDuplicates: flags.unique,
 		DescOrder:        flags.descOrder,
 		TopLimit:         flags.topLimit,
-		IgnoreCase:       flags.ignoreCase,
 	}
 
 	return sort.NewService(parameters, sorter)
