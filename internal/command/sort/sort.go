@@ -1,11 +1,11 @@
 package sort
 
 import (
-	"github.com/avazquezcode/gosorter/internal/file"
 	"github.com/avazquezcode/gosorter/internal/service/sort"
 	"github.com/avazquezcode/gosorter/internal/sorting"
-	"github.com/pkg/errors"
+	"github.com/avazquezcode/gosorter/internal/utils/file"
 
+	"github.com/pkg/errors"
 	"github.com/spf13/cobra"
 )
 

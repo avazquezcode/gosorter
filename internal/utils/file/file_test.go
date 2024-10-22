@@ -3,7 +3,7 @@ package file_test
 import (
 	"testing"
 
-	"github.com/avazquezcode/gosorter/internal/file"
+	"github.com/avazquezcode/gosorter/internal/utils/file"
 	"github.com/stretchr/testify/assert"
 )
 
