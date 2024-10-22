@@ -3,7 +3,7 @@
 <a href="https://goreportcard.com/report/github.com/avazquezcode/gosorter"><img src="https://goreportcard.com/badge/github.com/avazquezcode/gosorter" alt="Go Report Card" /></a>
 [![codecov](https://codecov.io/gh/avazquezcode/gosorter/graph/badge.svg?token=GCULNO7W0Q)](https://codecov.io/gh/avazquezcode/gosorter)
 
-GoSorter is a command line tool to sort lines in files.
+GoSorter is a command line tool to sort lines of files.
 
 It is largely inspired by the ["sort"](https://man7.org/linux/man-pages/man1/sort.1.html) linux command, but implemented in Golang. Also the functionality is not exactly the same (the **linux** tool is much more extensive and supports more options at the moment).
 
