@@ -19,6 +19,10 @@ func TestSortCmd(t *testing.T) {
 			args:       []string{},
 			expectsErr: true,
 		},
+		"invalid filename argument - file does not exist": {
+			args:       []string{"testdata/test404.txt"},
+			expectsErr: true,
+		},
 		"invalid unique flag": {
 			args:       []string{"testdata/test.txt", "--unique=string"},
 			expectsErr: true,
