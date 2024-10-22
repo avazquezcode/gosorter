@@ -25,6 +25,9 @@ __Basic usage__:
 
 __For more than one file just add multiple names :) For example__:
 
+> [!NOTE]  
+> In case of multiple files, the tool first merges the lines of all the files, and then sorts it
+
 - Execute: `gosorter sort <FILE1_PATH> <FILE2_PATH> <FILE3_PATH>`
 
 __To check the different flags (options) you can use, please run__: 
