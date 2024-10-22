@@ -1,7 +1,3 @@
-/*
-Copyright © 2024 Agustin Vazquez <avazquezcode@gmail.com>
-*/
-
 package cmd
 
 import (

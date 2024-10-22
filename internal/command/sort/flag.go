@@ -6,6 +6,14 @@ import (
 	"github.com/spf13/cobra"
 )
 
+const (
+	flagNameUnique     = "unique"
+	flagNameTop        = "top"
+	flagNameMethod     = "method"
+	flagNameOrder      = "order"
+	flagNameIgnoreCase = "ignore-case"
+)
+
 type (
 	flagsDTO struct {
 		unique     bool   // indicates the output should only contain unique items. it is up to the implementation of the sorting service "when" to do this (i.e: before or after sorting)
@@ -17,25 +25,25 @@ type (
 )
 
 func addFlags(cmd *cobra.Command) {
-	cmd.PersistentFlags().Bool("unique", false, "if true, only unique values will be consider in the output")
-	cmd.PersistentFlags().Int("top", 0, "used to limit the items shown in the output to the first <N> elements")
-	cmd.PersistentFlags().String("method", "default", "refers to the sorting algorithm used to perform the sorting operation (default|insertion|selection|mergesort)")
-	cmd.PersistentFlags().String("order", "asc", "indicates the order of the sorted output (asc|desc)")
-	cmd.PersistentFlags().Bool("ignore-case", false, "if true, the char case will be ignored in the comparison (i.e: 'AVA' = 'ava')")
+	cmd.PersistentFlags().Bool(flagNameUnique, false, "if true, only unique values will be consider in the output")
+	cmd.PersistentFlags().Int(flagNameTop, 0, "used to limit the items shown in the output to the first <N> elements")
+	cmd.PersistentFlags().String(flagNameMethod, "default", "refers to the sorting algorithm used to perform the sorting operation (default|insertion|selection|mergesort)")
+	cmd.PersistentFlags().String(flagNameOrder, "asc", "indicates the order of the sorted output (asc|desc)")
+	cmd.PersistentFlags().Bool(flagNameIgnoreCase, false, "if true, the char case will be ignored in the comparison (i.e: 'AVA' = 'ava')")
 }
 
 func parseFlags(cmd *cobra.Command) (*flagsDTO, error) {
-	unique, err := cmd.Flags().GetBool("unique")
+	unique, err := cmd.Flags().GetBool(flagNameUnique)
 	if err != nil {
 		return nil, err
 	}
 
-	topLimit, err := cmd.Flags().GetInt("top")
+	topLimit, err := cmd.Flags().GetInt(flagNameTop)
 	if err != nil {
 		return nil, err
 	}
 
-	algorithm, err := cmd.Flags().GetString("method")
+	algorithm, err := cmd.Flags().GetString(flagNameMethod)
 	if err != nil {
 		return nil, err
 	}
@@ -45,7 +53,7 @@ func parseFlags(cmd *cobra.Command) (*flagsDTO, error) {
 		return nil, err
 	}
 
-	ignoreCase, err := cmd.Flags().GetBool("ignore-case")
+	ignoreCase, err := cmd.Flags().GetBool(flagNameIgnoreCase)
 	if err != nil {
 		return nil, err
 	}
@@ -60,7 +68,7 @@ func parseFlags(cmd *cobra.Command) (*flagsDTO, error) {
 }
 
 func isDesc(cmd *cobra.Command) (*bool, error) {
-	sortingOrder, err := cmd.Flags().GetString("order")
+	sortingOrder, err := cmd.Flags().GetString(flagNameOrder)
 	if err != nil {
 		return nil, err
 	}
@@ -73,6 +81,6 @@ func isDesc(cmd *cobra.Command) (*bool, error) {
 		falseVal := false
 		return &falseVal, nil
 	default:
-		return nil, fmt.Errorf("error")
+		return nil, fmt.Errorf("the sorting order: %s is not valid", sortingOrder)
 	}
 }
