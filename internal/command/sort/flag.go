@@ -12,7 +12,7 @@ type (
 		topLimit   int    // indicates the limit of items to show in the output starting from the top (varies depending if the order is "asc" or "desc")
 		algorithm  string // indicates the algorithm that should be used for sorting
 		descOrder  bool   // if true the output will be sorted in descending order
-		ignoreCase bool   // if true the output will be
+		ignoreCase bool   // if true the char case will not be considered in the sorting comparison (i.e: "AVA" = "ava")
 	}
 )
 
