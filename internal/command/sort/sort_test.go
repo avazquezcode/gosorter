@@ -72,6 +72,11 @@ func TestSortCmd(t *testing.T) {
 			expectedOutput: "c\nb\nb\naaa\nBBB\n",
 			expectsErr:     false,
 		},
+		"valid case - ignore empty lines set to false": {
+			args:           []string{"testdata/test.txt", "--ignore-empty-lines=false"},
+			expectedOutput: "\nBBB\naaa\nb\nb\nc\n",
+			expectsErr:     false,
+		},
 	}
 
 	for name, test := range tests {

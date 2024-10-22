@@ -45,6 +45,47 @@ func TestRemoveDuplicates(t *testing.T) {
 	}
 }
 
+func TestRemoveIfMatches(t *testing.T) {
+	tests := []struct {
+		name           string
+		input          []int
+		removableItems []int
+		expected       []int
+	}{
+		{
+			name:           "empty input",
+			input:          []int{},
+			removableItems: []int{},
+			expected:       []int{},
+		},
+		{
+			name:           "no characters to remove",
+			input:          []int{1, 2, 3, 4},
+			removableItems: []int{},
+			expected:       []int{1, 2, 3, 4},
+		},
+		{
+			name:           "remove items (no duplicates)",
+			input:          []int{1, 2, 3, 4},
+			removableItems: []int{1, 3},
+			expected:       []int{2, 4},
+		},
+		{
+			name:           "remove items (more than 1 occurrence)",
+			input:          []int{1, 2, 2, 3, 4, 4, 4},
+			removableItems: []int{1, 2},
+			expected:       []int{3, 4, 4, 4},
+		},
+	}
+
+	for _, test := range tests {
+		t.Run(test.name, func(t *testing.T) {
+			result := slicetools.RemoveIfMatches(test.input, test.removableItems)
+			assert.Equal(t, test.expected, result)
+		})
+	}
+}
+
 // TestReverse tests the Reverse function
 func TestReverse(t *testing.T) {
 	tests := []struct {

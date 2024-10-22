@@ -7,20 +7,22 @@ import (
 )
 
 const (
-	flagNameUnique     = "unique"
-	flagNameTop        = "top"
-	flagNameMethod     = "method"
-	flagNameOrder      = "order"
-	flagNameIgnoreCase = "ignore-case"
+	flagNameUnique           = "unique"
+	flagNameTop              = "top"
+	flagNameMethod           = "method"
+	flagNameOrder            = "order"
+	flagNameIgnoreCase       = "ignore-case"
+	flagNameIgnoreEmptyLines = "ignore-empty-lines"
 )
 
 type (
 	flagsDTO struct {
-		unique     bool   // indicates the output should only contain unique items. it is up to the implementation of the sorting service "when" to do this (i.e: before or after sorting)
-		topLimit   int    // indicates the limit of items to show in the output starting from the top (varies depending if the order is "asc" or "desc")
-		algorithm  string // indicates the algorithm that should be used for sorting
-		descOrder  bool   // if true the output will be sorted in descending order
-		ignoreCase bool   // if true the char case will not be considered in the sorting comparison (i.e: "AVA" = "ava")
+		unique           bool
+		topLimit         int
+		algorithm        string
+		descOrder        bool
+		ignoreCase       bool
+		ignoreEmptyLines bool
 	}
 )
 
@@ -30,6 +32,7 @@ func addFlags(cmd *cobra.Command) {
 	cmd.PersistentFlags().String(flagNameMethod, "default", "refers to the sorting algorithm used to perform the sorting operation (default|insertion|selection|mergesort)")
 	cmd.PersistentFlags().String(flagNameOrder, "asc", "indicates the order of the sorted output (asc|desc)")
 	cmd.PersistentFlags().Bool(flagNameIgnoreCase, false, "if true, the char case will be ignored in the comparison (i.e: 'AVA' = 'ava')")
+	cmd.PersistentFlags().Bool(flagNameIgnoreEmptyLines, true, "if true, empty lines are removed from the output")
 }
 
 func parseFlags(cmd *cobra.Command) (*flagsDTO, error) {
@@ -58,12 +61,18 @@ func parseFlags(cmd *cobra.Command) (*flagsDTO, error) {
 		return nil, err
 	}
 
+	ignoreEmptyLines, err := cmd.Flags().GetBool(flagNameIgnoreEmptyLines)
+	if err != nil {
+		return nil, err
+	}
+
 	return &flagsDTO{
-		unique:     unique,
-		topLimit:   topLimit,
-		algorithm:  algorithm,
-		descOrder:  *isDescOrder,
-		ignoreCase: ignoreCase,
+		unique:           unique,
+		topLimit:         topLimit,
+		algorithm:        algorithm,
+		descOrder:        *isDescOrder,
+		ignoreCase:       ignoreCase,
+		ignoreEmptyLines: ignoreEmptyLines,
 	}, nil
 }
 

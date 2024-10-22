@@ -9,12 +9,13 @@ gosorter sort [file_path] [flags]
 ### Options
 
 ```
-  -h, --help            help for sort
-      --ignore-case     if true, the char case will be ignored in the comparison (i.e: 'AVA' = 'ava')
-      --method string   refers to the sorting algorithm used to perform the sorting operation (default|insertion|selection|mergesort) (default "default")
-      --order string    indicates the order of the sorted output (asc|desc) (default "asc")
-      --top int         used to limit the items shown in the output to the first <N> elements
-      --unique          if true, only unique values will be consider in the output
+  -h, --help                 help for sort
+      --ignore-case          if true, the char case will be ignored in the comparison (i.e: 'AVA' = 'ava')
+      --ignore-empty-lines   if true, empty lines are removed from the output (default true)
+      --method string        refers to the sorting algorithm used to perform the sorting operation (default|insertion|selection|mergesort) (default "default")
+      --order string         indicates the order of the sorted output (asc|desc) (default "asc")
+      --top int              used to limit the items shown in the output to the first <N> elements
+      --unique               if true, only unique values will be consider in the output
 ```
 
 ### SEE ALSO

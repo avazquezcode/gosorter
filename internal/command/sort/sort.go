@@ -72,6 +72,7 @@ func createSortService(flags *flagsDTO, sorter sorting.Sorter) *sort.Service {
 		RemoveDuplicates: flags.unique,
 		DescOrder:        flags.descOrder,
 		TopLimit:         flags.topLimit,
+		IgnoreEmptyLines: flags.ignoreEmptyLines,
 	}
 
 	return sort.NewService(parameters, sorter)

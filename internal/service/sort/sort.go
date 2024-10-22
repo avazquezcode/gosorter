@@ -11,6 +11,7 @@ type (
 		RemoveDuplicates bool
 		TopLimit         int
 		DescOrder        bool
+		IgnoreEmptyLines bool
 	}
 
 	// Service is the struct used to represent the service
@@ -31,6 +32,10 @@ func NewService(parameters Parameters, sorter sorting.Sorter) *Service {
 func (s *Service) Process(lines []string) []string {
 	if s.parameters.RemoveDuplicates {
 		lines = slicetools.RemoveDuplicates(lines)
+	}
+
+	if s.parameters.IgnoreEmptyLines {
+		lines = slicetools.RemoveIfMatches(lines, []string{""})
 	}
 
 	sortedLines := s.sorter.Sort(lines)

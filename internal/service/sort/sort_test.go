@@ -26,6 +26,13 @@ func TestProcess(t *testing.T) {
 			input:    []string{"b", "c", "a", "a"},
 			expected: []string{"a", "b", "c"},
 		},
+		"removing empty lines": {
+			parameters: sort.Parameters{
+				IgnoreEmptyLines: true,
+			},
+			input:    []string{"b", "c", "a", "", ""},
+			expected: []string{"a", "b", "c"},
+		},
 		"limiting output": {
 			parameters: sort.Parameters{
 				TopLimit: 2,
