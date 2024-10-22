@@ -19,15 +19,15 @@ It is largely inspired by the ["sort"](https://man7.org/linux/man-pages/man1/sor
 
 ## Usage
 
-__Basic usage__:
+*Basic usage*:
 
 - Execute: `gosorter sort <FILE_PATH>`
 
-__For more than one file just add multiple names :) For example__:
+*For more than one file just add multiple names :) For example*:
 
 - Execute: `gosorter sort <FILE1_PATH> <FILE2_PATH> <FILE3_PATH>`
 
-__To check the different flags (options) you can use, please run__: 
+*To check the different flags (options) you can use, please run*: 
 
 - Execute: `gosorter sort --help`
 
