@@ -8,7 +8,7 @@ import (
 )
 
 // LinesFromFile returns the content of a file as a slice of strings
-// where each item, represents a line in the file content
+// where each elements, represents a line in the file content
 func LinesFromFile(fileName string) ([]string, error) {
 	content, err := os.ReadFile(fileName)
 	if err != nil {

@@ -48,7 +48,7 @@ func parseFlags(cmd *cobra.Command) (*flagsDTO, error) {
 		return nil, err
 	}
 
-	isDesc, err := isDesc(cmd)
+	isDescOrder, err := isDescOrder(cmd)
 	if err != nil {
 		return nil, err
 	}
@@ -62,12 +62,12 @@ func parseFlags(cmd *cobra.Command) (*flagsDTO, error) {
 		unique:     unique,
 		topLimit:   topLimit,
 		algorithm:  algorithm,
-		descOrder:  *isDesc,
+		descOrder:  *isDescOrder,
 		ignoreCase: ignoreCase,
 	}, nil
 }
 
-func isDesc(cmd *cobra.Command) (*bool, error) {
+func isDescOrder(cmd *cobra.Command) (*bool, error) {
 	sortingOrder, err := cmd.Flags().GetString(flagNameOrder)
 	if err != nil {
 		return nil, err

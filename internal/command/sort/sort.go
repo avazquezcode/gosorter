@@ -14,6 +14,7 @@ const (
 	indexFileNameArg   = 0
 )
 
+// NewCommand creates the sort CLI command
 func NewCommand() *cobra.Command {
 	cmd := &cobra.Command{
 		Use:   "sort",
@@ -40,18 +41,19 @@ func process(cmd *cobra.Command, flags *flagsDTO, args []string) error {
 
 	lines, err := file.LinesFromFile(args[indexFileNameArg])
 	if err != nil {
-		return errors.Wrapf(err, "error extracting lines from")
+		return errors.Wrapf(err, "error extracting lines from file")
 	}
 
 	sortSvc := createSortService(flags, sorter)
 	output, err := sortSvc.Process(lines)
 	if err != nil {
-		return errors.Wrapf(err, "error while processing")
+		return err
 	}
 
 	for _, v := range output {
 		cmd.Println(v)
 	}
+
 	return nil
 }
 

@@ -2,7 +2,6 @@ package sort_test
 
 import (
 	"bytes"
-	"io"
 	"testing"
 
 	"github.com/avazquezcode/gosorter/internal/command/sort"
@@ -83,11 +82,7 @@ func TestSortCmd(t *testing.T) {
 
 			if err == nil {
 				// check stdout
-				out, err := io.ReadAll(&testStdOut)
-				if err != nil {
-					t.Fatal(err)
-				}
-				assert.Equal(t, test.expectedOutput, string(out))
+				assert.Equal(t, test.expectedOutput, testStdOut.String())
 			}
 		})
 	}
