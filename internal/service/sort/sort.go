@@ -5,10 +5,20 @@ import (
 	"github.com/avazquezcode/gosorter/internal/utils/slicetools"
 )
 
-type Service struct {
-	parameters Parameters
-	sorter     sorting.Sorter
-}
+type (
+	// Parameters are the parameters that modify the behaviour of the service
+	Parameters struct {
+		RemoveDuplicates bool
+		TopLimit         int
+		DescOrder        bool
+	}
+
+	// Service is the struct used to represent the service
+	Service struct {
+		parameters Parameters
+		sorter     sorting.Sorter
+	}
+)
 
 func NewService(parameters Parameters, sorter sorting.Sorter) *Service {
 	return &Service{
