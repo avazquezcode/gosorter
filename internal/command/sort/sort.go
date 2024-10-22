@@ -9,17 +9,12 @@ import (
 	"github.com/spf13/cobra"
 )
 
-const (
-	expectedArgsNumber = 1
-	indexFileNameArg   = 0
-)
-
 // NewCommand creates the sort CLI command
 func NewCommand() *cobra.Command {
 	cmd := &cobra.Command{
-		Use:   "sort [file_path]",
-		Short: "sorts lines of a file",
-		Args:  cobra.ExactArgs(expectedArgsNumber),
+		Use:   "sort [file_path] ... [OPTIONAL file_N_path]",
+		Short: "sorts lines of a file (or lines of multiple files merged alltogether)",
+		Args:  cobra.MinimumNArgs(1), // we need at least 1 filename
 		RunE: func(cmd *cobra.Command, args []string) error {
 			flags, err := parseFlags(cmd)
 			if err != nil {
@@ -39,9 +34,14 @@ func process(cmd *cobra.Command, flags *flagsDTO, args []string) error {
 		return errors.Wrapf(err, "error creating the sorter")
 	}
 
-	lines, err := file.LinesFromFile(args[indexFileNameArg])
-	if err != nil {
-		return errors.Wrapf(err, "error extracting lines from file")
+	lines := make([]string, 0)
+
+	for _, fileName := range args {
+		fileLines, err := file.LinesFromFile(fileName)
+		if err != nil {
+			return errors.Wrapf(err, "error extracting lines from file: %s", fileName)
+		}
+		lines = append(lines, fileLines...)
 	}
 
 	sortSvc := createSortService(flags, sorter)

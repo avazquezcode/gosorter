@@ -77,6 +77,11 @@ func TestSortCmd(t *testing.T) {
 			expectedOutput: "\nBBB\naaa\nb\nb\nc\n",
 			expectsErr:     false,
 		},
+		"valid case - default flags - multi file": {
+			args:           []string{"testdata/test.txt", "testdata/test2.txt"},
+			expectedOutput: "BBB\naaa\nb\nb\nc\nzzzzz\n",
+			expectsErr:     false,
+		},
 	}
 
 	for name, test := range tests {

@@ -15,7 +15,7 @@ It is largely inspired by the ["sort"](https://man7.org/linux/man-pages/man1/sor
 
 - Just install this tool: `go install github.com/avazquezcode/gosorter@latest`
 
-- Execute: `gosorter sort <FILE_PATH>`
+- Execute: `gosorter sort <FILE_PATH> ... <OPTIONAL: FILE_N_PATH>`
 
 - To check the different flags (options) you can use, please run `gosorter sort --help`
 
