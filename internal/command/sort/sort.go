@@ -17,7 +17,7 @@ const (
 // NewCommand creates the sort CLI command
 func NewCommand() *cobra.Command {
 	cmd := &cobra.Command{
-		Use:   "sort",
+		Use:   "sort [file_path]",
 		Short: "sorts lines of a file",
 		Args:  cobra.ExactArgs(expectedArgsNumber),
 		RunE: func(cmd *cobra.Command, args []string) error {

@@ -3,7 +3,7 @@
 sorts lines of a file
 
 ```
-gosorter sort [flags]
+gosorter sort [file_path] [flags]
 ```
 
 ### Options
