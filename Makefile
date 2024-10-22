@@ -1,6 +1,3 @@
-run:
-	go run main.go sort words.txt --unique --top=5 --method=mergesort
-
 test:
 	go test ./...
 
