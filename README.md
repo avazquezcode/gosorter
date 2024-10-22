@@ -20,4 +20,6 @@ It is largely inspired in the ["sort"](https://man7.org/linux/man-pages/man1/sor
 
 - To check the different flags (options) you can use, please run `gosorter sort --help`
 
+# Documentation
+For a complete documentation of the tool, please refer to [this](./docs/gosorter.md).
 
