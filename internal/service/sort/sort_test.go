@@ -3,8 +3,8 @@ package sort_test
 import (
 	"testing"
 
+	"github.com/avazquezcode/gosorter/internal/domain/sorting"
 	"github.com/avazquezcode/gosorter/internal/service/sort"
-	"github.com/avazquezcode/gosorter/internal/sorting"
 
 	"github.com/stretchr/testify/assert"
 )

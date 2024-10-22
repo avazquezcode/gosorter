@@ -1,7 +1,7 @@
 package sort
 
 import (
-	"github.com/avazquezcode/gosorter/internal/sorting"
+	"github.com/avazquezcode/gosorter/internal/domain/sorting"
 	"github.com/avazquezcode/gosorter/internal/utils/slicetools"
 )
 
