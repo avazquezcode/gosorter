@@ -1,5 +1,11 @@
 package sorting
 
-type Sorter interface {
-	Sort(items []string) []string
-}
+type (
+	SortOptions struct {
+		IgnoreCase bool
+	}
+
+	Sorter interface {
+		Sort(items []string) []string
+	}
+)

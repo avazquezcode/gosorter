@@ -8,10 +8,11 @@ import (
 
 type (
 	flagsDTO struct {
-		unique    bool   // indicates the output should only contain unique items. it is up to the implementation of the sorting service "when" to do this (i.e: before or after sorting)
-		topLimit  int    // indicates the limit of items to show in the output starting from the top (varies depending if the order is "asc" or "desc")
-		algorithm string // indicates the algorithm that should be used for sorting
-		descOrder bool   // if true the output will be sorted in descending order
+		unique     bool   // indicates the output should only contain unique items. it is up to the implementation of the sorting service "when" to do this (i.e: before or after sorting)
+		topLimit   int    // indicates the limit of items to show in the output starting from the top (varies depending if the order is "asc" or "desc")
+		algorithm  string // indicates the algorithm that should be used for sorting
+		descOrder  bool   // if true the output will be sorted in descending order
+		ignoreCase bool   // if true the output will be
 	}
 )
 

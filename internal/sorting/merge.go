@@ -1,7 +1,9 @@
 package sorting
 
 // mergeSort implements merge sort algorithm
-type mergeSort struct{}
+type mergeSort struct {
+	options SortOptions
+}
 
 // Sort ...
 func (s mergeSort) Sort(items []string) []string {

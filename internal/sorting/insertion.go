@@ -1,7 +1,9 @@
 package sorting
 
 // insertionSort implements insertion sort algorithm
-type insertionSort struct{}
+type insertionSort struct {
+	options SortOptions
+}
 
 // Sort ...
 func (s insertionSort) Sort(items []string) []string {

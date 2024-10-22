@@ -4,7 +4,7 @@ import (
 	"fmt"
 
 	"github.com/avazquezcode/gosorter/internal/file"
-	"github.com/avazquezcode/gosorter/internal/service"
+	"github.com/avazquezcode/gosorter/internal/service/sort"
 	"github.com/avazquezcode/gosorter/internal/sorting"
 	"github.com/pkg/errors"
 
@@ -35,9 +35,9 @@ func NewCommand() *cobra.Command {
 }
 
 func process(flags *flagsDTO, args []string) error {
-	sorter, err := sorting.Factory(flags.algorithm)
+	sorter, err := createSorter(flags)
 	if err != nil {
-		return errors.Wrapf(err, "error constructing sorter")
+		return errors.Wrapf(err, "error creating the sorter")
 	}
 
 	lines, err := file.LinesFromFile(args[indexFileNameArg])
@@ -45,8 +45,8 @@ func process(flags *flagsDTO, args []string) error {
 		return errors.Wrapf(err, "error extracting lines from")
 	}
 
-	sortService := service.NewSortService(flags.unique, flags.topLimit, sorter, flags.descOrder)
-	output, err := sortService.Process(lines)
+	sortSvc := createSortService(flags, sorter)
+	output, err := sortSvc.Process(lines)
 	if err != nil {
 		return errors.Wrapf(err, "error while processing")
 	}
@@ -55,4 +55,28 @@ func process(flags *flagsDTO, args []string) error {
 		fmt.Println(v)
 	}
 	return nil
+}
+
+func createSorter(flags *flagsDTO) (sorting.Sorter, error) {
+	sortOptions := sorting.SortOptions{
+		IgnoreCase: flags.ignoreCase,
+	}
+
+	sorter, err := sorting.Factory(flags.algorithm, sortOptions)
+	if err != nil {
+		return nil, errors.Wrapf(err, "error constructing sorter")
+	}
+
+	return sorter, nil
+}
+
+func createSortService(flags *flagsDTO, sorter sorting.Sorter) *sort.Service {
+	parameters := sort.Parameters{
+		RemoveDuplicates: flags.unique,
+		DescOrder:        flags.descOrder,
+		TopLimit:         flags.topLimit,
+		IgnoreCase:       flags.ignoreCase,
+	}
+
+	return sort.NewService(parameters, sorter)
 }

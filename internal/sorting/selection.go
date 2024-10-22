@@ -1,6 +1,8 @@
 package sorting
 
-type selectionSort struct{}
+type selectionSort struct {
+	options SortOptions
+}
 
 func (s selectionSort) Sort(items []string) []string {
 	n := len(items)
