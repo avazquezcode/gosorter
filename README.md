@@ -19,20 +19,17 @@ It is largely inspired by the ["sort"](https://man7.org/linux/man-pages/man1/sor
 
 ## Usage
 
-*Basic usage*:
+*Basic usage, please run*:
 
-- Execute: `gosorter sort <FILE_PATH>`
+`gosorter sort <FILE_PATH>`
 
-*For more than one file just add multiple names :) For example*:
+*For more than one file just add multiple names :). The lines of all the files will be merged together, and then sorted. Example*:
 
-> [!NOTE]  
-> In case of multiple files, the tool first merges the lines of all the files, and then sorts it
+`gosorter sort <FILE1_PATH> <FILE2_PATH> <FILE3_PATH>`
 
-- Execute: `gosorter sort <FILE1_PATH> <FILE2_PATH> <FILE3_PATH>`
+*To check the different flags (options), please run*: 
 
-*To check the different flags (options) you can use, please run*: 
-
-- Execute: `gosorter sort --help`
+`gosorter sort --help`
 
 # Documentation
 
