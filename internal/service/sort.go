@@ -2,7 +2,7 @@ package service
 
 import (
 	"github.com/avazquezcode/gosorter/internal/sorting"
-	"github.com/avazquezcode/gosorter/internal/utils/string_slice"
+	"github.com/avazquezcode/gosorter/internal/utils/slicetools"
 )
 
 type SortService struct {
@@ -24,13 +24,13 @@ func NewSortService(removeDuplicates bool, topLimit int, sorter sorting.Sorter, 
 // Process executes the sort process
 func (s *SortService) Process(lines []string) ([]string, error) {
 	if s.removeDuplicates {
-		lines = string_slice.RemoveDuplicates(lines)
+		lines = slicetools.RemoveDuplicates(lines)
 	}
 
 	sortedLines := s.sorter.Sort(lines)
 
 	if s.descOrder {
-		sortedLines = string_slice.Reverse(sortedLines)
+		sortedLines = slicetools.Reverse(sortedLines)
 	}
 
 	if len(sortedLines) > 0 && s.topLimit > 0 {

@@ -1,9 +1,9 @@
-package string_slice
+package slicetools
 
 // RemoveDuplicates removes duplicates from a slice (it doesn't cause a side effect in the input)
-func RemoveDuplicates(list []string) []string {
-	result := []string{}
-	set := make(map[string]struct{}, 0)
+func RemoveDuplicates[T comparable](list []T) []T {
+	result := []T{}
+	set := make(map[T]struct{}, 0)
 	for _, item := range list {
 		if _, exist := set[item]; exist {
 			continue
@@ -16,8 +16,8 @@ func RemoveDuplicates(list []string) []string {
 }
 
 // Reverse returns the reversed list (it doesn't cause a side effect in the input)
-func Reverse(list []string) []string {
-	reversed := make([]string, len(list))
+func Reverse[T any](list []T) []T {
+	reversed := make([]T, len(list))
 	copy(reversed, list)
 
 	for i, j := 0, len(reversed)-1; i < j; i, j = i+1, j-1 {
