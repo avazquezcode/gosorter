@@ -5,10 +5,16 @@ It is largely inspired in the ["sort"](https://man7.org/linux/man-pages/man1/sor
 
 *Important*: This tool doesn't support binary files at the moment.
 
+# Important
+
+⚠️ This tools was developed for fun in a few hours, and not battle tested. So use carefully and at your own risk :)
+
 # Getting started
 
-- Just install this tool: <Add command here>
+- Just install this tool: `go install github.com/avazquezcode/gosorter@v0.1.1-alpha`
 
 - Execute: `gosorter sort <FILE_PATH>`
 
 - To check the different flags (options) you can use, please run `gosorter sort --help`
+
+
