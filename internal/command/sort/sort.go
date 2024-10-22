@@ -1,8 +1,6 @@
 package sort
 
 import (
-	"fmt"
-
 	"github.com/avazquezcode/gosorter/internal/file"
 	"github.com/avazquezcode/gosorter/internal/service/sort"
 	"github.com/avazquezcode/gosorter/internal/sorting"
@@ -26,7 +24,7 @@ func NewCommand() *cobra.Command {
 			if err != nil {
 				return errors.Wrapf(err, "error parsing flags")
 			}
-			return process(flags, args)
+			return process(cmd, flags, args)
 		},
 	}
 
@@ -34,7 +32,7 @@ func NewCommand() *cobra.Command {
 	return cmd
 }
 
-func process(flags *flagsDTO, args []string) error {
+func process(cmd *cobra.Command, flags *flagsDTO, args []string) error {
 	sorter, err := createSorter(flags)
 	if err != nil {
 		return errors.Wrapf(err, "error creating the sorter")
@@ -52,7 +50,7 @@ func process(flags *flagsDTO, args []string) error {
 	}
 
 	for _, v := range output {
-		fmt.Println(v)
+		cmd.Println(v)
 	}
 	return nil
 }
