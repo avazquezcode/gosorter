@@ -2,23 +2,29 @@ package sorting
 
 import "strings"
 
+// selectionSort implements selection sort algorithm
 type selectionSort struct {
 	options SortOptions
 }
 
+// Sort sorts the input
 func (s selectionSort) Sort(items []string) []string {
-	n := len(items)
+	// make a copy to avoid side effects on the input
+	itemsCp := make([]string, len(items))
+	copy(itemsCp, items)
+
+	n := len(itemsCp)
 	for i := 0; i < n; i++ {
 		minIdx := i
 		for j := i + 1; j < n; j++ {
-			if s.less(items[j], items[minIdx]) {
+			if s.less(itemsCp[j], itemsCp[minIdx]) {
 				minIdx = j
 			}
 		}
-		items[i], items[minIdx] = items[minIdx], items[i]
+		itemsCp[i], itemsCp[minIdx] = itemsCp[minIdx], itemsCp[i]
 	}
 
-	return items
+	return itemsCp
 }
 
 func (s selectionSort) less(a string, b string) bool {

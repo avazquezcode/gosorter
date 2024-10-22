@@ -1,6 +1,7 @@
 package sorting
 
 import (
+	"encoding/json"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -106,9 +107,16 @@ func TestSort(t *testing.T) {
 	for _, method := range methods {
 		for name, test := range tests {
 			t.Run(method+"_"+name, func(t *testing.T) {
+				// save a temp JSON value of the input, to cross check side effects avoidance
+				inputJSON, _ := json.Marshal(test.input)
+
 				sorter, _ := Factory(method, test.options)
 				got := sorter.Sort(test.input)
 				assert.Equal(t, test.expected, got)
+
+				// make sure there are no side effects in the input
+				inputPostSortJSON, _ := json.Marshal(test.input)
+				assert.Equal(t, string(inputJSON), string(inputPostSortJSON))
 			})
 		}
 	}

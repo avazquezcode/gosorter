@@ -2,12 +2,12 @@ package sorting
 
 import "strings"
 
-// mergeSort implements merge sort algorithm
+// mergeSort implements mergesort algorithm
 type mergeSort struct {
 	options SortOptions
 }
 
-// Sort ...
+// Sort sorts the input
 func (s mergeSort) Sort(items []string) []string {
 	if len(items) < 2 {
 		return items

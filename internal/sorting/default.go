@@ -5,15 +5,21 @@ import (
 	"strings"
 )
 
+// defaultSort uses the strings library to sort the data
 type defaultSort struct {
 	options SortOptions
 }
 
+// Sort sorts the input
 func (s defaultSort) Sort(items []string) []string {
-	sort.Slice(items, func(i, j int) bool {
-		return s.less(items[i], items[j])
+	// make a copy to avoid side effects on the input
+	sortedItems := make([]string, len(items))
+	copy(sortedItems, items)
+
+	sort.Slice(sortedItems, func(i, j int) bool {
+		return s.less(sortedItems[i], sortedItems[j])
 	})
-	return items
+	return sortedItems
 }
 
 func (s defaultSort) less(a string, b string) bool {

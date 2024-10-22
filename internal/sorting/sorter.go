@@ -5,9 +5,8 @@ type (
 		IgnoreCase bool
 	}
 
+	// The implementation of this interface MUST guarantee no side effects on the original slice (input)
 	Sorter interface {
-		// this method might add side effects on the original list passed as an input, depending on the sorting algorithm being used
-		// if you need to guarantee no side effects, please copy your list in advance and pass a copy
 		Sort(items []string) []string
 	}
 )
