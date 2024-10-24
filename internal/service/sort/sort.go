@@ -30,13 +30,7 @@ func NewService(parameters Parameters, sorter sorting.Sorter) *Service {
 
 // Process executes the sort process
 func (s *Service) Process(lines []string) []string {
-	if s.parameters.RemoveDuplicates {
-		lines = slicetools.RemoveDuplicates(lines)
-	}
-
-	if s.parameters.IgnoreEmptyLines {
-		lines = slicetools.RemoveIfMatches(lines, []string{""})
-	}
+	lines = s.preProcess(lines)
 
 	sortedLines := s.sorter.Sort(lines)
 
@@ -49,4 +43,38 @@ func (s *Service) Process(lines []string) []string {
 	}
 
 	return sortedLines
+}
+
+// preProcess prepares the array for the sorting
+// it takes care of cleaning it up based on the parameters passed by the user
+func (s *Service) preProcess(lines []string) []string {
+	var result []string
+	set := make(map[string]struct{}, 0)
+	for _, line := range lines {
+		if s.parameters.RemoveDuplicates {
+			if _, exist := set[line]; exist {
+				continue
+			}
+		}
+
+		removableLines := s.removableLines()
+		if _, shouldRemove := removableLines[line]; shouldRemove {
+			continue
+		}
+
+		set[line] = struct{}{}
+		result = append(result, line)
+	}
+
+	return result
+}
+
+func (s *Service) removableLines() map[string]struct{} {
+	lines := make(map[string]struct{}, 0)
+
+	if s.parameters.IgnoreEmptyLines {
+		lines[""] = struct{}{}
+	}
+
+	return lines
 }
