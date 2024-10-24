@@ -1,5 +1,5 @@
 # GoSorter
-[![Go](https://github.com/avazquezcode/govetryx/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/avazquezcode/govetryx/actions/workflows/ci.yml)
+[![Go](https://github.com/avazquezcode/gosorter/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/avazquezcode/gosorter/actions/workflows/ci.yml)
 <a href="https://goreportcard.com/report/github.com/avazquezcode/gosorter"><img src="https://goreportcard.com/badge/github.com/avazquezcode/gosorter" alt="Go Report Card" /></a>
 [![codecov](https://codecov.io/gh/avazquezcode/gosorter/graph/badge.svg?token=GCULNO7W0Q)](https://codecov.io/gh/avazquezcode/gosorter)
 
